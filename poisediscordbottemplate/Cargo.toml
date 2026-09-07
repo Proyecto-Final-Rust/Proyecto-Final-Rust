@@ -1,0 +1,12 @@
+[package]
+name = "comecocos"
+version = "0.1.0"
+edition = "2024"
+license = "GPLv3"
+
+[dependencies]
+poise = "0.6.2"
+serde = { version = "1.0.229", features = ["derive", "rc"] }
+serde-saphyr = "1.0.1"
+serde_json = { version = "1.0.151", features = ["preserve_order"] }
+tokio = { version = "1.53.1", features = ["full"] }
