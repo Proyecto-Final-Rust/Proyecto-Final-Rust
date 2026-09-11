@@ -3,8 +3,7 @@
 mod commands;
 
 use std::{
-    collections::HashMap,
-    sync::{Arc, Mutex},
+    collections::HashMap, env, sync::{Arc, Mutex}
 };
 
 use poise::serenity_prelude::{self as serenity};
@@ -44,6 +43,10 @@ type MemoryMap = Arc<Mutex<HashMap<serenity::UserId, Pila>>>;
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().ok();
+    let discord_token = env::var("DISCORD_TOKEN")
+        .expect("missing DISCORD_TOKEN");
+
     // Se inicializa la memoria
     let memoria: MemoryMap = Arc::new(Mutex::new(HashMap::new()));
     let datos_memoria = memoria.clone();
@@ -64,10 +67,9 @@ async fn main() {
         })
         .build();
 
-    let token = std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN");
     let intents = serenity::GatewayIntents::non_privileged();
 
-    let mut client = serenity::ClientBuilder::new(token, intents)
+    let mut client = serenity::ClientBuilder::new(discord_token, intents)
         .framework(framework)
         .await
         .expect("Falló al crear el cliente");

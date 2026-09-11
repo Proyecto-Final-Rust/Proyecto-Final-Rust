@@ -5,6 +5,7 @@ edition = "2024"
 license = "GPLv3"
 
 [dependencies]
+dotenvy = "0.15.7"
 poise = "0.6.2"
 serde = { version = "1.0.229", features = ["derive", "rc"] }
 serde-saphyr = "1.0.1"
