@@ -203,17 +203,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "comecocos"
-version = "0.1.0"
-dependencies = [
- "poise",
- "serde",
- "serde-saphyr",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "core-foundation-sys"
 version = "0.8.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1969,6 +1958,17 @@ name = "triomphe"
 version = "0.1.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b40688ea6389c8171614b25491f71d4a27946e0c7ce2da1c6de27e25abf1a0ae"
+
+[[package]]
+name = "truco-bot"
+version = "0.1.0"
+dependencies = [
+ "poise",
+ "serde",
+ "serde-saphyr",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "try-lock"
