@@ -7,6 +7,7 @@ license = "GPLv3"
 [dependencies]
 dotenvy = "0.15.7"
 poise = "0.6.2"
+rand = "0.10.3"
 serde = { version = "1.0.229", features = ["derive", "rc"] }
 serde-saphyr = "1.0.1"
 serde_json = { version = "1.0.151", features = ["preserve_order"] }

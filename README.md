@@ -69,7 +69,7 @@ Construir un motor de juego de Truco Argentino 1vs1 en Rust, expuesto como bot d
 
 | Característica | Descripción |
 |---|---|
-| 🎴 **Partidas 1vs1** | Dos jugadores compiten por alcanzar el puntaje objetivo (30 puntos). |
+| 🎴 **Partidas 1vs1** | Dos jugadores compiten por alcanzar el puntaje objetivo (15 puntos). |
 | ⚖️ **Árbitro automático** | Valida jugadas, turnos y asignación de puntajes. |
 | 📢 **Cantos válidos** | Truco, Retruco, Vale Cuatro, Envido, Real Envido, Falta Envido. |
 | 🔒 **Mano privada** | Las cartas se envían por respuesta efímera; solo el dueño las ve. |
@@ -285,8 +285,6 @@ cargo build --release
 cargo run
 ```
 
-> **[PENDIENTE]:** Crear archivo `.env.example` con las variables necesarias.
-
 ---
 
 ## 🎮 Uso
@@ -367,7 +365,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 👥 Autores
 
 - **Ezequiel**
-- **Mateo Vázquez**
+- **Teo Vázquez**
+- **Mateo Cocimano**
 
 *Proyecto final — Seminario de Rust 2026*
 

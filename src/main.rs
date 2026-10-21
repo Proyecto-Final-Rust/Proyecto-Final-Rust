@@ -1,6 +1,7 @@
 #![warn(clippy::str_to_string)]
 
 mod commands;
+mod modelos;
 
 use std::{
     collections::HashMap, env, sync::{Arc, Mutex}
