@@ -80,34 +80,7 @@ Construir un motor de juego de Truco Argentino 1vs1 en Rust, expuesto como bot d
 
 ## 🏗️ Arquitectura de software
 
-```mermaid
-graph TD
-    A[Usuario / Discord] -->|Slash Command| B[Poise Framework]
-    B -->|Evento| C[Serenity / Discord API]
-    C -->|Contexto| D[Servicio de Partidas]
-    D -->|Estado compartido| E[Arc<Mutex<Partida>>]
-    D -->|Reglas de negocio| F[Motor del Truco - Dominio Puro]
-    F -->|Validación / Puntaje| G[Resultado de Jugada]
-    G --> D
-    D -->|Respuesta pública / efímera| C
-    C --> A
-
-    subgraph Capa de Presentación (Discord)
-    A
-    B
-    C
-    end
-
-    subgraph Capa de Aplicación
-    D
-    E
-    end
-
-    subgraph Capa de Dominio (Puro)
-    F
-    G
-    end
-```
+> **[PENDIENTE]:** Arreglar diagrama(Fallo para graficar).
 
 ### Capas
 
@@ -157,23 +130,11 @@ Partida
 
 ## 🔄 Flujo de vida de una partida
 
-```mermaid
-stateDiagram-v2
-    [*] --> EsperandoAceptacion: /truco crear
-    EsperandoAceptacion --> Repartiendo: /truco aceptar
-    Repartiendo --> EnJuego: se reparten 3 cartas
-    
-    EnJuego --> EnJuego: jugada válida
-    EnJuego --> EsperandoRespuestaCanto: se canta Truco/Envido
-    EsperandoRespuestaCanto --> EnJuego: aceptar / rechazar / subir
-    EsperandoRespuestaCanto --> EnJuego: fin de canto
-    
-    EnJuego --> LiquidandoRonda: se terminan las cartas de la mano
-    LiquidandoRonda --> EnJuego: siguiente ronda
-    LiquidandoRonda --> Finalizada: se alcanza 30 puntos
-    
-    Finalizada --> [*]: se declara ganador y se limpia estado
-```
+**Red de Petri del Flujo Basico (Sin considerar las condiciones de finalizacion de la partida)**
+
+<p align="center">
+  <img src="./resources/petri1.png" alt="Diagrama de flujo basico de una partida">
+</p>
 
 **Secuencia resumida:**
 
@@ -203,8 +164,6 @@ stateDiagram-v2
 ---
 
 ## ❓ Decisiones técnicas clave
-
-A continuación se responden las preguntas de diseño del borrador original:
 
 ### ¿Por qué Rust?
 Seguridad de memoria en tiempo de compilación (sin GC), concurrencia sin miedo (`fearless concurrency`) y rendimiento nativo vía LLVM.
